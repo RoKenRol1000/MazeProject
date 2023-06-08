@@ -10,15 +10,15 @@ class Camera final
     float _tettaAnggle = 0.f;
 public:
     Camera() noexcept = default;;
-    Camera(QVector3D pos, float phiAngle, float tettaAngle) noexcept;
+    //Camera(QVector3D pos, float phiAngle, float tettaAngle) noexcept;
 
-    void ChangePos(QVector3D pos);
-    void SetPhiAngle(float angle);
-    void SetTettaAngle(float angle);
+    //void ChangePos(QVector3D pos);
+    //void SetPhiAngle(float angle);
+    //void SetTettaAngle(float angle);
 
-    [[nodiscard]] const QVector3D& GetPos() const noexcept;
-    [[nodiscard]] float GetPhiAngle() const noexcept;
-    [[nodiscard]] float GetTettaAngle() const noexcept;
+    //[[nodiscard]] const QVector3D& GetPos() const noexcept;
+    //[[nodiscard]] float GetPhiAngle() const noexcept;
+    //[[nodiscard]] float GetTettaAngle() const noexcept;
 };
 
 #endif // CAMERA_H
