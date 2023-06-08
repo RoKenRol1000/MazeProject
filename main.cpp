@@ -1,10 +1,10 @@
-#include <QCoreApplication>
+#include <QGuiApplication>
 #include "mainwindow.h"
 #include <QSurfaceFormat>
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     MainWindow window;
 
     QSurfaceFormat format;
