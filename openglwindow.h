@@ -16,7 +16,7 @@ class OpenGLWindow : public QWindow, protected QOpenGLFunctions
     Q_OBJECT
 public:
     explicit OpenGLWindow(QWindow *parent = nullptr);
-    ~OpenGLWindow();
+    virtual ~OpenGLWindow() override;
 
     virtual void render(QPainter *painter);
     virtual void render();

@@ -7,10 +7,11 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     MainWindow window;
 
-    QSurfaceFormat format;
-    format.setSamples(16);
+    //QSurfaceFormat format;
+    //format.setSamples(16);
+    //Вылетает exception...
+    //window.setFormat(format);
 
-    window.setFormat(format);
     window.resize(640, 480);
     window.show();
     window.setAnimating(true);

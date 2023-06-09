@@ -20,11 +20,32 @@ add_executable(Maze
     mainwindow.cpp
     mainwindow.h
     camera.h camera.cpp
+    wall.h wall.cpp
     Shaders/fragment.fsh
     Shaders/vertex.vsh
 )
 
+set(RESOURCE_FILES
+    Shaders/fragment.fsh
+    Shaders/vertex.vsh)
+
 target_link_libraries(Maze PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::OpenGL)
+
+add_custom_target(copy_shaders ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PROJECT_SOURCE_DIR}/Shaders
+        ${PROJECT_BINARY_DIR}/Shaders
+        COMMENT "Copying shaders into binary directory")
+
+add_dependencies(Maze copy_shaders)
+
+add_custom_target(copy_resources ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PROJECT_SOURCE_DIR}/Resources
+        ${PROJECT_BINARY_DIR}/Resources
+        COMMENT "Copying resources into binary directory")
+
+add_dependencies(Maze copy_resources)
 
 install(TARGETS Maze
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
