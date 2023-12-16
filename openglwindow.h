@@ -11,7 +11,7 @@ class QOpenGLPaintDevice;
 QT_END_NAMESPACE
 
 //! [1]
-class OpenGLWindow : public QWindow, protected QOpenGLFunctions
+class OpenGLWindow : public QWindow, public QOpenGLFunctions
 {
     Q_OBJECT
 public:

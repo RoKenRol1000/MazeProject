@@ -2,8 +2,11 @@
 #include "mainwindow.h"
 #include <QSurfaceFormat>
 
+#pragma execution_character_set( "utf-8" )ssssd
+
 int main(int argc, char *argv[])
 {
+    SetConsoleOutputCP( 65001 );
     QGuiApplication app(argc, argv);
     MainWindow window;
 
@@ -12,8 +15,8 @@ int main(int argc, char *argv[])
     //Вылетает exception...
     //window.setFormat(format);
 
-    window.resize(640, 480);
-    window.show();
+    //window.resize(QWindow::FullScreen);
+    window.showFullScreen();
     window.setAnimating(true);
 
     return app.exec();
