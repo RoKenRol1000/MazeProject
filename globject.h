@@ -1,11 +1,19 @@
 #ifndef GLOBJECT_H
 #define GLOBJECT_H
 
-#include <QOpenGLFunctions>
+#include <QVector3D>
+#include <vector>
 
 class QOpenGLShaderProgram;
 
-class GLObject: protected QOpenGLFunctions
+struct Vertex
+{
+    QVector3D posAttr;
+    QVector3D norm;
+    QVector2D uvMap;
+};
+
+class GLObject
 {
 public:
     virtual ~GLObject() noexcept = default;
@@ -16,7 +24,7 @@ public:
     GLObject& operator=(const GLObject&) noexcept = default;
     GLObject& operator=(GLObject&&) noexcept = default;
 
-    virtual void Render(QOpenGLShaderProgram&) = 0;
+    virtual std::vector<Vertex> Generate() = 0;
 };
 
 #endif // GLOBJECT_H
