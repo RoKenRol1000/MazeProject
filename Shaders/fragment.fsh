@@ -1,10 +1,10 @@
 #version 120
 uniform sampler2D texture;
-uniform sampler2D textureNormalMap;
+//uniform sampler2D textureNormalMap;
 varying vec2 uvMap;
 varying vec3 localNorm;
 varying vec4 resPos;
-uniform vec3 camPos;
+varying vec3 camPos;
 
 //point light
 uniform vec3 pointLightPos;
@@ -25,7 +25,7 @@ vec3 calcNormalFromNormalmap(vec3 localNormal, vec2 uv)
     vec3 t = normalize( cross(n, vec3(1,1,1)) );
     vec3 b = cross(n, t);
     // Достаём нормаль из карты высот
-    vec3 normal = texture2D( textureNormalMap, uv ).rgb;
+    vec3 normal ;//= texture2D( textureNormalMap, uv ).rgb;
     normal = normalize( normal * 2.0 - 1.0 );
     // Рассчитываем результирующую нормаль
     vec3 resultingNormal = normalize( normal.x * t + normal.y * b + normal.z * n );
@@ -52,7 +52,7 @@ void main() {
     pointSpecColor += pointLightSpecColor * pow(max(dot(resNorm, H) , 0.0), specularReflection) * attenuation;
 
     vec3 ambientLight = globalAmbient.xyz * ambientIntesity;
-    vec3 diffuseLight = pointDiffColor;
+    vec3 diffuseLight = pointDiffColor.xyz;
     vec3 specularLight = pointSpecColor.xyz;
-    gl_FragColor = texture2D(texture, uvMap)  * vec4((ambientLight.xyz + diffuseLight.xyz + specularLight.xyz), 1.0);
+    gl_FragColor = texture2D(texture, uvMap);//  * vec4((ambientLight.xyz + diffuseLight.xyz + specularLight.xyz), 1.0);
 }

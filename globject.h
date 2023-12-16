@@ -1,9 +1,11 @@
 #ifndef GLOBJECT_H
 #define GLOBJECT_H
 
+#include <QOpenGLFunctions>
+
 class QOpenGLShaderProgram;
 
-class GLObject
+class GLObject: protected QOpenGLFunctions
 {
 public:
     virtual ~GLObject() noexcept = default;
@@ -14,7 +16,7 @@ public:
     GLObject& operator=(const GLObject&) noexcept = default;
     GLObject& operator=(GLObject&&) noexcept = default;
 
-    virtual void Render(const QOpenGLShaderProgram&) = 0;
+    virtual void Render(QOpenGLShaderProgram&) = 0;
 };
 
 #endif // GLOBJECT_H
