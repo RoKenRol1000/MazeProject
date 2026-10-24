@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core OpenGl multimedia)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core OpenGl multimedia)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core OpenGL OpenGLWidgets Multimedia)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core OpenGL OpenGLWidgets Multimedia)
 
 add_executable(Maze
     main.cpp
@@ -32,7 +32,12 @@ set(RESOURCE_FILES
     Shaders/fragment.fsh
     Shaders/vertex.vsh)
 
-target_link_libraries(Maze PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::OpenGL Qt${QT_VERSION_MAJOR}::Multimedia)
+target_link_libraries(Maze PRIVATE
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::OpenGL
+    Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+    Qt${QT_VERSION_MAJOR}::Multimedia
+)
 
 add_custom_target(copy_shaders ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory

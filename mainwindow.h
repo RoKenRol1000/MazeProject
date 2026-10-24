@@ -30,6 +30,10 @@ class MainWindow final: public OpenGLWindow
     GLint texCord;
     GLint normAttr;
 
+    GLuint _wallVbo = 0;
+    GLuint _balkVbo = 0;
+    GLuint _floorVbo = 0;
+
     size_t _mazeWidth = 100;
     size_t _mazeHeight = 100;
 
